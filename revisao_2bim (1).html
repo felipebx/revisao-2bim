@@ -1,0 +1,1362 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Revisão 2º Bimestre | Enfermagem Clínico-Cirúrgica II</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --verde: #1a6b4a;
+    --verde-claro: #2e9468;
+    --verde-suave: #e8f5ee;
+    --verde-borda: #b2dfcb;
+    --ouro: #c9a227;
+    --ouro-claro: #f5e9c0;
+    --cinza-escuro: #1e2a25;
+    --cinza-medio: #4a5e55;
+    --cinza-claro: #f4f7f5;
+    --branco: #ffffff;
+    --vermelho: #c0392b;
+    --vermelho-suave: #fdf0ee;
+    --azul: #1a4b6b;
+    --azul-suave: #e8f0f5;
+    --sombra: 0 4px 24px rgba(26,107,74,0.10);
+    --sombra-forte: 0 8px 40px rgba(26,107,74,0.18);
+    --radius: 14px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cinza-claro);
+    color: var(--cinza-escuro);
+    min-height: 100vh;
+  }
+
+  /* HEADER */
+  header {
+    background: var(--verde);
+    color: white;
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .header-inner {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 44px 32px 36px;
+    position: relative;
+    z-index: 1;
+  }
+  .header-tag {
+    display: inline-block;
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.25);
+    border-radius: 40px;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 5px 16px;
+    margin-bottom: 18px;
+    color: rgba(255,255,255,0.85);
+  }
+  header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(26px, 5vw, 38px);
+    font-weight: 900;
+    line-height: 1.15;
+    margin-bottom: 10px;
+    letter-spacing: -0.5px;
+  }
+  header h1 span { color: var(--ouro); }
+  .header-sub {
+    font-size: 15px;
+    color: rgba(255,255,255,0.78);
+    font-weight: 400;
+  }
+  .header-deco {
+    position: absolute;
+    right: -30px; top: -30px;
+    width: 220px; height: 220px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+  .header-deco2 {
+    position: absolute;
+    right: 60px; top: 60px;
+    width: 110px; height: 110px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.07);
+  }
+
+  /* MAIN */
+  main { max-width: 860px; margin: 0 auto; padding: 32px 20px 60px; }
+
+  /* BOAS-VINDAS */
+  .boas-vindas {
+    background: linear-gradient(135deg, var(--verde-suave) 0%, #d4f0e2 100%);
+    border: 1.5px solid var(--verde-borda);
+    border-radius: var(--radius);
+    padding: 28px 32px;
+    margin-bottom: 28px;
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+  }
+  .boas-vindas-icon {
+    font-size: 34px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .boas-vindas h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 19px;
+    color: var(--verde);
+    margin-bottom: 6px;
+    font-weight: 700;
+  }
+  .boas-vindas p {
+    font-size: 14.5px;
+    line-height: 1.7;
+    color: var(--cinza-medio);
+  }
+  .boas-vindas strong { color: var(--verde); }
+
+  /* CARD IDENTIFICACAO */
+  .card {
+    background: var(--branco);
+    border-radius: var(--radius);
+    box-shadow: var(--sombra);
+    padding: 32px;
+    margin-bottom: 24px;
+  }
+  .card-titulo {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    color: var(--verde);
+    margin-bottom: 20px;
+    padding-bottom: 14px;
+    border-bottom: 2px solid var(--verde-suave);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .card-titulo .icone { font-size: 20px; }
+
+  .form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .form-grid .full { grid-column: 1 / -1; }
+
+  label {
+    display: block;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    color: var(--cinza-medio);
+    margin-bottom: 7px;
+  }
+  input[type="text"], select {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1.5px solid #d5e5dd;
+    border-radius: 9px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    color: var(--cinza-escuro);
+    background: var(--cinza-claro);
+    transition: border-color .2s, box-shadow .2s;
+    outline: none;
+    -webkit-appearance: none;
+  }
+  input[type="text"]:focus, select:focus {
+    border-color: var(--verde-claro);
+    box-shadow: 0 0 0 3px rgba(46,148,104,0.12);
+    background: white;
+  }
+  select {
+    cursor: pointer;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%234a5e55' stroke-width='1.8' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    padding-right: 40px;
+  }
+
+  .btn-iniciar {
+    width: 100%;
+    margin-top: 24px;
+    padding: 16px;
+    background: var(--verde);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    letter-spacing: 0.3px;
+    transition: background .2s, transform .15s, box-shadow .2s;
+    box-shadow: 0 4px 16px rgba(26,107,74,0.25);
+  }
+  .btn-iniciar:hover { background: var(--verde-claro); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(26,107,74,0.32); }
+  .btn-iniciar:active { transform: translateY(0); }
+  .btn-iniciar:disabled { background: #aaa; box-shadow: none; cursor: not-allowed; transform: none; }
+
+  /* QUIZ AREA */
+  #quiz-area { display: none; }
+
+  /* BARRA PROGRESSO */
+  .progresso-wrap {
+    background: white;
+    border-radius: var(--radius);
+    box-shadow: var(--sombra);
+    padding: 20px 28px;
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+  }
+  .progresso-info { flex: 1; }
+  .progresso-label {
+    font-size: 12px;
+    color: var(--cinza-medio);
+    font-weight: 600;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .progresso-bar-bg {
+    height: 8px;
+    background: var(--verde-suave);
+    border-radius: 100px;
+    overflow: hidden;
+  }
+  .progresso-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--verde), var(--verde-claro));
+    border-radius: 100px;
+    transition: width 0.5s cubic-bezier(0.4,0,0.2,1);
+    width: 0%;
+  }
+  .progresso-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--verde);
+    white-space: nowrap;
+  }
+
+  /* ABAS TEMA */
+  .temas-nav {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 22px;
+  }
+  .tema-btn {
+    padding: 8px 18px;
+    border-radius: 40px;
+    border: 1.5px solid var(--verde-borda);
+    background: white;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--cinza-medio);
+    cursor: pointer;
+    transition: all .2s;
+    white-space: nowrap;
+  }
+  .tema-btn:hover { border-color: var(--verde); color: var(--verde); }
+  .tema-btn.ativo { background: var(--verde); color: white; border-color: var(--verde); }
+  .tema-btn.completo { background: var(--verde-suave); color: var(--verde); border-color: var(--verde); }
+  .tema-btn .check { margin-right: 4px; }
+
+  /* SECAO TEMA */
+  .secao-tema { display: none; }
+  .secao-tema.visivel { display: block; }
+  .secao-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 20px;
+  }
+  .secao-numero {
+    background: var(--verde);
+    color: white;
+    font-family: 'Playfair Display', serif;
+    font-size: 13px;
+    font-weight: 700;
+    padding: 6px 14px;
+    border-radius: 40px;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+  }
+  .secao-titulo {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--cinza-escuro);
+  }
+
+  /* QUESTAO CARD */
+  .questao-card {
+    background: white;
+    border-radius: var(--radius);
+    box-shadow: var(--sombra);
+    margin-bottom: 22px;
+    overflow: hidden;
+    border: 1.5px solid #e8ede9;
+    transition: box-shadow .2s;
+  }
+  .questao-card:hover { box-shadow: var(--sombra-forte); }
+  .questao-card.respondida { border-color: var(--verde-borda); }
+  .questao-card.respondida.errada { border-color: #f5c6c2; }
+
+  .questao-header {
+    padding: 18px 24px 14px;
+    border-bottom: 1px solid #f0f4f1;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .questao-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--verde);
+    font-weight: 500;
+    white-space: nowrap;
+    margin-top: 2px;
+  }
+  .questao-status { font-size: 18px; }
+
+  .questao-enunciado {
+    padding: 16px 24px 20px;
+    font-size: 14.5px;
+    line-height: 1.75;
+    color: var(--cinza-escuro);
+    white-space: pre-line;
+  }
+  .questao-enunciado strong { color: var(--verde); }
+
+  /* OPÇÕES */
+  .opcoes { padding: 0 18px 20px; display: flex; flex-direction: column; gap: 8px; }
+  .opcao {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 13px 16px;
+    border-radius: 9px;
+    border: 1.5px solid #e4ede7;
+    cursor: pointer;
+    transition: all .2s;
+    background: white;
+  }
+  .opcao:hover:not(.bloqueada) { border-color: var(--verde); background: var(--verde-suave); }
+  .opcao.selecionada { border-color: var(--ouro); background: var(--ouro-claro); }
+  .opcao.correta { border-color: var(--verde-claro); background: var(--verde-suave); }
+  .opcao.incorreta { border-color: var(--vermelho); background: var(--vermelho-suave); }
+  .opcao.bloqueada { cursor: default; }
+
+  .opcao-letra {
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--cinza-medio);
+    background: #f0f4f1;
+    border-radius: 5px;
+    padding: 2px 9px;
+    flex-shrink: 0;
+    margin-top: 1px;
+    transition: all .2s;
+  }
+  .opcao.selecionada .opcao-letra { background: var(--ouro); color: white; }
+  .opcao.correta .opcao-letra { background: var(--verde-claro); color: white; }
+  .opcao.incorreta .opcao-letra { background: var(--vermelho); color: white; }
+  .opcao-texto { font-size: 14px; line-height: 1.6; color: var(--cinza-escuro); }
+
+  /* BOTAO CONFIRMAR */
+  .questao-footer { padding: 0 24px 22px; }
+  .btn-confirmar {
+    padding: 12px 28px;
+    background: var(--verde);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all .2s;
+    box-shadow: 0 3px 12px rgba(26,107,74,0.22);
+  }
+  .btn-confirmar:hover { background: var(--verde-claro); transform: translateY(-1px); }
+  .btn-confirmar:disabled { background: #ccc; box-shadow: none; cursor: not-allowed; transform: none; }
+
+  /* GABARITO COMENTADO */
+  .gabarito-box {
+    margin: 14px 24px 22px;
+    border-radius: 10px;
+    overflow: hidden;
+    display: none;
+    animation: fadeSlide .35s ease;
+  }
+  @keyframes fadeSlide {
+    from { opacity: 0; transform: translateY(-8px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .gabarito-box.visivel { display: block; }
+  .gabarito-header {
+    padding: 12px 18px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 600;
+    font-size: 13.5px;
+  }
+  .gabarito-box.acerto .gabarito-header { background: var(--verde); color: white; }
+  .gabarito-box.erro .gabarito-header { background: var(--vermelho); color: white; }
+  .gabarito-header .resultado-icon { font-size: 18px; }
+  .gabarito-justificativa {
+    padding: 16px 18px;
+    font-size: 13.5px;
+    line-height: 1.75;
+    color: #2d4035;
+    white-space: pre-line;
+  }
+  .gabarito-box.acerto .gabarito-justificativa { background: var(--verde-suave); }
+  .gabarito-box.erro .gabarito-justificativa { background: var(--vermelho-suave); color: #5c1a1a; }
+
+  /* NAV TEMAS RODAPÉ */
+  .nav-temas-rodape {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 8px;
+  }
+  .btn-nav {
+    flex: 1;
+    padding: 13px 20px;
+    border-radius: 9px;
+    border: 1.5px solid var(--verde-borda);
+    background: white;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--verde);
+    cursor: pointer;
+    transition: all .2s;
+    text-align: center;
+  }
+  .btn-nav:hover { background: var(--verde); color: white; border-color: var(--verde); }
+  .btn-nav:disabled { opacity: 0.35; cursor: not-allowed; }
+  .btn-nav.proximo { background: var(--verde); color: white; }
+  .btn-nav.proximo:hover { background: var(--verde-claro); }
+
+  /* RESULTADO FINAL */
+  #resultado-final {
+    display: none;
+    animation: fadeSlide .5s ease;
+  }
+  .resultado-card {
+    background: white;
+    border-radius: var(--radius);
+    box-shadow: var(--sombra-forte);
+    padding: 40px 36px;
+    text-align: center;
+    border: 2px solid var(--verde-borda);
+  }
+  .resultado-emoji { font-size: 56px; margin-bottom: 16px; }
+  .resultado-nome {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--cinza-escuro);
+    margin-bottom: 6px;
+  }
+  .resultado-ra {
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    color: var(--cinza-medio);
+    margin-bottom: 28px;
+  }
+  .resultado-placar {
+    font-family: 'Playfair Display', serif;
+    font-size: 64px;
+    font-weight: 900;
+    color: var(--verde);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .resultado-placar-sub { font-size: 15px; color: var(--cinza-medio); margin-bottom: 30px; }
+  .resultado-barras { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; margin-bottom: 32px; }
+  .resultado-barra-item { flex: 1; min-width: 120px; background: var(--cinza-claro); border-radius: 10px; padding: 14px 12px; text-align: center; }
+  .resultado-barra-item .rb-num { font-family: 'Playfair Display', serif; font-size: 26px; font-weight: 700; color: var(--verde); }
+  .resultado-barra-item .rb-label { font-size: 11px; color: var(--cinza-medio); text-transform: uppercase; letter-spacing: 0.8px; font-weight: 600; margin-top: 2px; }
+  .resultado-barra-item.rb-err .rb-num { color: var(--vermelho); }
+  .resultado-mensagem {
+    background: var(--verde-suave);
+    border: 1px solid var(--verde-borda);
+    border-radius: 10px;
+    padding: 18px 22px;
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--verde);
+    font-weight: 500;
+    margin-bottom: 28px;
+  }
+  .btn-reiniciar {
+    padding: 14px 36px;
+    background: var(--verde);
+    color: white;
+    border: none;
+    border-radius: 9px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all .2s;
+    box-shadow: 0 4px 16px rgba(26,107,74,0.25);
+  }
+  .btn-reiniciar:hover { background: var(--verde-claro); }
+
+  /* ALERTA */
+  .alerta {
+    background: #fff8e1;
+    border: 1.5px solid #ffe082;
+    border-radius: 9px;
+    padding: 12px 16px;
+    font-size: 13px;
+    color: #7a5900;
+    margin-top: 12px;
+    display: none;
+  }
+  .alerta.visivel { display: block; }
+
+  @media (max-width: 600px) {
+    .form-grid { grid-template-columns: 1fr; }
+    .card { padding: 22px 18px; }
+    .questao-enunciado { padding: 14px 16px 16px; }
+    .opcoes { padding: 0 12px 16px; }
+    .questao-footer { padding: 0 16px 18px; }
+    .gabarito-box { margin: 10px 16px 18px; }
+    .progresso-wrap { padding: 16px 18px; gap: 12px; }
+    .nav-temas-rodape { flex-direction: column; }
+    .resultado-card { padding: 28px 20px; }
+    .header-inner { padding: 30px 20px 28px; }
+    .boas-vindas { padding: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-deco"></div>
+  <div class="header-deco2"></div>
+  <div class="header-inner">
+    <div class="header-tag">FHO · Enfermagem Clínico-Cirúrgica II</div>
+    <h1>Revisão do <span>2º Bimestre</span></h1>
+    <div class="header-sub">Neurologia · Hepatologia · Pneumologia · Nefrologia · IRAS</div>
+  </div>
+</header>
+
+<main>
+
+  <!-- IDENTIFICAÇÃO -->
+  <div id="tela-identificacao">
+    <div class="boas-vindas">
+      <div class="boas-vindas-icon">🧠</div>
+      <div>
+        <h2>Revise o conteúdo e coloque seus conhecimentos à prova.</h2>
+        <p>Esta plataforma reúne as <strong>questões do 2º Bimestre</strong> organizadas por tema. Responda com atenção, reflita sobre cada alternativa e confira o gabarito comentado ao final de cada questão. O aprendizado está no processo, não apenas na resposta certa. <strong>Bons estudos!</strong></p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-titulo"><span class="icone">📋</span> Identificação do Estudante</div>
+      <div class="form-grid">
+        <div class="full">
+          <label for="nome">Nome completo</label>
+          <input type="text" id="nome" placeholder="Digite seu nome completo">
+        </div>
+        <div>
+          <label for="ra">RA (Registro Acadêmico)</label>
+          <input type="text" id="ra" placeholder="Ex: 2024001234">
+        </div>
+        <div>
+          <label for="turma">Turma</label>
+          <select id="turma">
+            <option value="">Selecione sua turma</option>
+            <option value="A">Turma A</option>
+            <option value="B">Turma B</option>
+          </select>
+        </div>
+      </div>
+      <div class="alerta" id="alerta-form">⚠️ Preencha todos os campos antes de continuar.</div>
+      <button class="btn-iniciar" onclick="iniciarQuiz()">Iniciar Revisão →</button>
+    </div>
+  </div>
+
+  <!-- QUIZ -->
+  <div id="quiz-area">
+    <div class="progresso-wrap">
+      <div class="progresso-info">
+        <div class="progresso-label">Progresso geral</div>
+        <div class="progresso-bar-bg">
+          <div class="progresso-bar-fill" id="barra-progresso"></div>
+        </div>
+      </div>
+      <div class="progresso-num" id="num-progresso">0 / 23</div>
+    </div>
+
+    <div class="temas-nav" id="temas-nav"></div>
+
+    <!-- TEMAS SERÃO INJETADOS AQUI -->
+    <div id="secoes-container"></div>
+
+    <div class="nav-temas-rodape">
+      <button class="btn-nav" id="btn-anterior" onclick="navTema(-1)" disabled>← Tema anterior</button>
+      <button class="btn-nav proximo" id="btn-proximo" onclick="navTema(1)">Próximo tema →</button>
+    </div>
+  </div>
+
+  <!-- RESULTADO FINAL -->
+  <div id="resultado-final">
+    <div class="resultado-card">
+      <div class="resultado-emoji" id="res-emoji">🎓</div>
+      <div class="resultado-nome" id="res-nome"></div>
+      <div class="resultado-ra" id="res-ra"></div>
+      <div class="resultado-placar" id="res-placar"></div>
+      <div class="resultado-placar-sub">questões corretas</div>
+      <div class="resultado-barras">
+        <div class="resultado-barra-item"><div class="rb-num" id="rb-acertos"></div><div class="rb-label">Acertos</div></div>
+        <div class="resultado-barra-item rb-err"><div class="rb-num" id="rb-erros"></div><div class="rb-label">Erros</div></div>
+        <div class="resultado-barra-item"><div class="rb-num" id="rb-pct"></div><div class="rb-label">Desempenho</div></div>
+      </div>
+      <div class="resultado-mensagem" id="res-mensagem"></div>
+      <button class="btn-reiniciar" onclick="reiniciar()">Refazer a revisão</button>
+    </div>
+  </div>
+
+</main>
+
+<script>
+const TEMAS = [
+  {
+    id: "neurologico",
+    titulo: "Distúrbios Neurológicos",
+    questoes: [
+      {
+        num: 1,
+        enunciado: `Sobre o Ataque Isquêmico Transitório (AIT), analise as afirmativas a seguir:
+
+I. O AIT é definido como déficit neurológico focal de início súbito com resolução completa em menos de 24 horas, sem evidência de infarto cerebral permanente à neuroimagem.
+II. O risco de AVC nos 3 meses subsequentes a um AIT é de 10 a 15%, o que justifica investigação e tratamento urgentes.
+III. Por apresentar resolução espontânea dos sintomas, o AIT dispensa avaliação com neuroimagem, sendo suficiente o acompanhamento ambulatorial eletivo.
+IV. A antiagregação plaquetária deve ser iniciada precocemente após o diagnóstico de AIT, visando reduzir o risco de AVC estabelecido.
+
+É correto apenas o que se afirma em:`,
+        opcoes: ["I e III.", "II e III.", "I, II e IV.", "I, II, III e IV."],
+        gabarito: 2,
+        justificativa: `A afirmativa III é FALSA: o AIT é considerado sinal de alerta para AVC iminente, sendo obrigatória a avaliação urgente com neuroimagem para excluir infarto permanente e definir conduta terapêutica. As afirmativas I, II e IV estão corretas.`
+      },
+      {
+        num: 2,
+        enunciado: `Uma enfermeira está realizando atendimento pré-hospitalar a um paciente de 55 anos que apresentou, de forma súbita, incapacidade de elevar o braço direito quando solicitado a estender ambos os membros superiores com os olhos fechados, além de discurso com palavras trocadas e incompreensíveis. Ao avaliar a face, não identificou assimetria.
+
+Com base na Escala de Cincinnati, qual é a conduta correta?`,
+        opcoes: [
+          "Não acionar o SAMU, pois a face encontra-se normal, e a escala exige alteração nos 3 itens para configurar suspeita de AVC.",
+          "Acionar imediatamente o SAMU 192 e notificar o hospital de destino, pois a alteração em pelo menos 1 dos 3 itens da escala configura suspeita de AVC.",
+          "Aguardar o retorno espontâneo da força muscular por até 1 hora antes de acionar o serviço de emergência, uma vez que pode se tratar de AIT.",
+          "Aplicar os 3 itens da escala integralmente e registrar o resultado, encaminhando o paciente para avaliação médica no próximo dia útil."
+        ],
+        gabarito: 1,
+        justificativa: `A Escala de Cincinnati avalia face, braços e fala. A presença de alteração em qualquer um dos 3 itens configura suspeita de AVC, exigindo acionamento imediato do SAMU 192 e notificação prévia do hospital de destino. Neste caso, há dois itens alterados (debilidade de braço e fala anormal), o que reforça ainda mais a necessidade de ação imediata.`
+      },
+      {
+        num: 3,
+        enunciado: `Um paciente de 60 anos, com AVC hemorrágico confirmado, foi submetido a craniotomia descompressiva há 6 horas. Durante a avaliação de enfermagem no pós-operatório imediato, o enfermeiro observa: Glasgow em queda progressiva (de 13 para 10 em 2 horas), pupila direita midriática e sem fotorreatividade, bradicardia com FC de 48 bpm, PA de 190/100 mmHg e frequência respiratória de 8 irpm.
+
+Diante desse quadro, qual é a interpretação mais adequada e a conduta prioritária da enfermagem?`,
+        opcoes: [
+          "Os sinais vitais são esperados no pós-operatório imediato de craniotomia; manter a monitorização e registrar os dados no prontuário para avaliação médica no próximo plantão.",
+          "O quadro é compatível com Tríade de Cushing, sinal de herniação cerebral iminente; comunicar imediatamente a equipe médica, manter cabeceira a 30 graus e preparar para osmoterapia de urgência.",
+          "A bradicardia e a hipertensão são efeitos esperados da anestesia geral; administrar atropina conforme protocolo de bradicardia e aguardar resolução espontânea.",
+          "A anisocoria isolada não tem valor clínico significativo no pós-operatório neurológico; a prioridade é o controle da dor e o conforto do paciente."
+        ],
+        gabarito: 1,
+        justificativa: `O conjunto de hipertensão arterial, bradicardia e bradipneia caracteriza a Tríade de Cushing, sinal clássico de hipertensão intracraniana grave com risco iminente de herniação cerebral. A anisocoria associada reforça esse diagnóstico. A conduta prioritária é comunicação imediata à equipe médica, manutenção da cabeceira a 30 graus com alinhamento cervical neutro e preparo para osmoterapia. Trata-se de emergência neurocirúrgica que não admite espera.`
+      },
+      {
+        num: 4,
+        enunciado: `Sobre a trombólise no AVC isquêmico, analise as afirmativas:
+
+I. A tenecteplase na dose de 0,25 mg/kg IV em bolus único é recomendação Classe I pela Diretriz AHA/ASA 2026.
+II. A alteplase permanece uma opção válida, administrada na dose de 0,9 mg/kg IV, sendo 10% em bolus e 90% em infusão contínua por 60 minutos, com dose máxima de 90 mg.
+III. A dose de tenecteplase de 0,4 mg/kg é recomendada para pacientes com déficit neurológico mais grave, pois confere maior poder trombolítico sem aumento significativo do risco hemorrágico.
+IV. O mecanismo de ação dos trombolíticos consiste na conversão do plasminogênio em plasmina, enzima responsável pela degradação da fibrina do coágulo.
+
+É correto apenas o que se afirma em:`,
+        opcoes: ["I e III.", "II e IV.", "I, II e IV.", "I, II, III e IV."],
+        gabarito: 2,
+        justificativa: `As afirmativas I, II e IV estão corretas. A afirmativa III está INCORRETA: a dose de 0,4 mg/kg de tenecteplase NÃO é recomendada. A Diretriz AHA/ASA 2026 a contraindica expressamente pelo aumento do risco hemorrágico sem benefício adicional comprovado. A dose recomendada é exclusivamente 0,25 mg/kg (máximo 25 mg).`
+      },
+      {
+        num: 5,
+        enunciado: `O Paciente A (72 anos, HAS + DM) apresenta hemiplegia à direita e afasia de início gradual, durante o sono, Glasgow 14. TC: área hipodensa no território da artéria cerebral média esquerda. O Paciente B (60 anos, HAS não controlada) apresenta cefaleia súbita de intensidade máxima, vômitos em jato, Glasgow 9, PA 210/130 mmHg. TC: área hiperdensa intraparenquimatosa extensa em região frontoparietal direita.
+
+Analise as afirmativas:
+I. Paciente A: AVC isquêmico de provável etiologia trombótica. Paciente B: AVC hemorrágico intraparenquimatoso confirmado.
+II. Trombólise indicada para o Paciente A (janela 4,5h, sem contraindicações); absolutamente contraindicada para o Paciente B.
+III. Manejo do Paciente B inclui meta de PAS < 140 mmHg em até 1 hora, suspensão de anticoagulantes, cabeceira 30–45° e osmoterapia se houver sinais de HIC.
+IV. Cefaleia intensa súbita, vômitos em jato e rebaixamento de consciência são mais característicos do AVC isquêmico; hemiplegia e afasia são sinais exclusivos do AVC hemorrágico.
+
+Assinale a alternativa correta:`,
+        opcoes: [
+          "Apenas I e II estão corretas.",
+          "Apenas II e III estão corretas.",
+          "I, II e III estão corretas.",
+          "I, II, III e IV estão corretas."
+        ],
+        gabarito: 2,
+        justificativa: `I, II e III estão corretas. A afirmativa IV está INCORRETA: cefaleia súbita intensa, vômitos em jato e rebaixamento do nível de consciência são sinais característicos do AVC HEMORRÁGICO, não do isquêmico. A hemiplegia e a afasia não são exclusivas do hemorrágico, ocorrendo em ambos os tipos conforme a topografia da lesão.`
+      }
+    ]
+  },
+  {
+    id: "hepatico",
+    titulo: "Distúrbios Hepáticos",
+    questoes: [
+      {
+        num: 1,
+        enunciado: `Sobre a fisiopatologia da cirrose hepática e sua progressão, analise as afirmativas:
+
+I. A cirrose é definida como condição hepática crônica e irreversível, caracterizada pela substituição do tecido saudável por tecido fibroso e nódulos regenerativos.
+II. A sequência fisiopatológica compreende: agressão hepática crônica → ativação das células de Ito → produção de colágeno → fibrose progressiva e comprometimento da função hepatocelular.
+III. No Brasil, a etiologia alcoólica responde por 40 a 50% dos casos, seguida pelo vírus da hepatite C, sendo a DHGNA uma etiologia emergente.
+IV. A cirrose compensada é frequentemente sintomática desde o início, com ascite volumosa, encefalopatia e hematêmese como manifestações inaugurais.
+
+Assinale a alternativa correta:`,
+        opcoes: [
+          "Apenas I e IV estão corretas.",
+          "Apenas II e III estão corretas.",
+          "I, II e III estão corretas.",
+          "I, II, III e IV estão corretas."
+        ],
+        gabarito: 2,
+        justificativa: `As afirmativas I, II e III estão corretas. A afirmativa IV está INCORRETA: é exatamente o inverso. A cirrose compensada é frequentemente assintomática ou apresenta sintomas leves (fadiga, aranhas vasculares, eritema palmar). As manifestações graves como ascite volumosa, encefalopatia e hematêmese são características da cirrose DESCOMPENSADA.`
+      },
+      {
+        num: 2,
+        enunciado: `Sobre as funções hepáticas e a fisiopatologia da cirrose, analise as afirmativas:
+
+I. A albumina, sintetizada exclusivamente pelo fígado, mantém a pressão oncótica plasmática; sua redução na cirrose favorece extravasamento de líquido para o espaço intersticial.
+II. O fígado sintetiza a maioria dos fatores de coagulação (II, V, VII, IX, X); na cirrose, a redução dessa síntese eleva o INR e aumenta o risco de sangramento.
+III. As células de Kupffer são macrófagos residentes hepáticos; sua disfunção na cirrose favorece infecções como a peritonite bacteriana espontânea.
+IV. As células de Ito, quando ativadas pela agressão crônica, produzem colágeno, sendo as principais responsáveis pela fibrose hepática progressiva.
+
+É correto o que se afirma em:`,
+        opcoes: ["Apenas I e III.", "Apenas II e IV.", "I, II e III.", "I, II, III e IV."],
+        gabarito: 3,
+        justificativa: `Todas as afirmativas estão corretas. Albumina < 3,5 g/dL indica falência sintética hepática. A coagulopatia da cirrose reflete a queda dos fatores dependentes da síntese hepática. A redução das células de Kupffer compromete a defesa imunológica local, facilitando a translocação bacteriana para o líquido ascítico. A ativação das células estreladas de Ito é o mecanismo central da fibrogênese hepática.`
+      },
+      {
+        num: 3,
+        enunciado: `A Sra. Glória, 50 anos, cirrose hepática por hepatite B, internada com confusão mental progressiva, abdome globoso, icterícia, edema bilateral, manchas hemorrágicas e evacuações com aspecto de "borra de café" há 3 dias. Apresenta hematêmese de moderada quantidade. Exames: albumina 2,5 g/dL, bilirrubina total 4,5 mg/dL, AST 85 UI/L, ALT 60 UI/L, plaquetas 75.000/mm³ e hemoglobina 9,0 g/dL.
+
+Qual é a interpretação mais completa e correta?`,
+        opcoes: [
+          "A paciente apresenta cirrose compensada com icterícia leve; a confusão mental é de origem psiquiátrica e não está relacionada à hepatopatia.",
+          "O quadro é compatível com cirrose descompensada, com encefalopatia hepática, sangramento por provável ruptura de varizes esofágicas, ascite e coagulopatia; a plaquetopenia reflete hiperesplenismo secundário à hipertensão portal.",
+          "A hematêmese e a melena indicam úlcera péptica como diagnóstico principal; a ascite e a icterícia são achados incidentais.",
+          "A albumina de 2,5 g/dL está dentro dos limites aceitáveis para pacientes com hepatopatia crônica."
+        ],
+        gabarito: 1,
+        justificativa: `O quadro é característico de cirrose descompensada com múltiplas complicações simultâneas: encefalopatia hepática (confusão mental), sangramento digestivo alto compatível com ruptura de varizes esofágicas (melena + hematêmese), plaquetopenia por hiperesplenismo (75.000/mm³), albumina 2,5 g/dL indicando falência sintética e bilirrubina 4,5 mg/dL explicando a icterícia.`
+      },
+      {
+        num: 4,
+        enunciado: `Com base no caso da Sra. Glória (cirrose descompensada, ascite volumosa, encefalopatia e risco de sangramento), para o diagnóstico "Risco de sangramento evidenciado por distúrbios gastrointestinais e função hepática prejudicada", qual o conjunto mais adequado de condutas de enfermagem?`,
+        opcoes: [
+          "Administrar heparina profilática subcutânea; realizar punções venosas de grosso calibre; ofertar dieta hipercalórica rica em carnes vermelhas.",
+          "Preferir agulhas finas para punções; evitar injeções intramusculares; observar e comunicar imediatamente epistaxe, hematêmese e melena; evitar alimentos duros; monitorar sinais de choque.",
+          "Estimular deambulação precoce sem restrições; não realizar balanço hídrico; restringir totalmente a ingesta proteica.",
+          "Realizar sondagem retal com técnica vigorosa; administrar anti-inflamatórios não esteroidais para controle da dor abdominal."
+        ],
+        gabarito: 1,
+        justificativa: `A alternativa B reúne as prescrições corretas para risco de sangramento em paciente cirrótico: proteção contra traumatismos (agulhas finas, evitar IM), monitoramento e comunicação de sinais de sangramento, vigilância de sinais de choque. Heparina é contraindicada e dieta hiperproteica pode precipitar encefalopatia. O balanço hídrico é intervenção fundamental. Sondagem retal agressiva e AINEs aumentam o risco de sangramento.`
+      },
+      {
+        num: 5,
+        enunciado: `Uma enfermeira presta cuidados a um paciente internado com encefalopatia hepática grau II. Sobre as intervenções de enfermagem prioritárias nesse caso, assinale a alternativa correta:`,
+        opcoes: [
+          "Estimular dieta hiperproteica imediata; administrar sedativos para controlar a agitação; restringir acesso venoso.",
+          "Monitorar o nível de consciência com escala de Glasgow periodicamente; orientar restrição proteica temporária se necessário; garantir administração da lactulose conforme prescrição; prevenir quedas; monitorar sinais de agravamento neurológico.",
+          "Manter o paciente em decúbito dorsal horizontal sem elevar a cabeceira; administrar benzodiazepínicos; estimular ingesta de carnes vermelhas.",
+          "Suspender todos os medicamentos até melhora do nível de consciência; realizar contenção física imediata como primeira medida; não comunicar alterações do Glasgow por 24 horas."
+        ],
+        gabarito: 1,
+        justificativa: `As intervenções corretas incluem monitoramento frequente do nível de consciência com Glasgow, prevenção de quedas pela desorientação, garantia da administração correta da lactulose, restrição proteica temporária se necessário no pico agudo, e comunicação imediata de qualquer deterioração neurológica. Sedativos e benzodiazepínicos são contraindicados pois podem agravar a encefalopatia. Dieta hiperproteica é fator precipitante.`
+      }
+    ]
+  },
+  {
+    id: "respiratorio",
+    titulo: "Distúrbios Respiratórios",
+    questoes: [
+      {
+        num: 1,
+        enunciado: `Sobre a sequência fisiopatológica da DPOC, analise as afirmativas:
+
+I. A exposição crônica à fumaça do tabaco desencadeia inflamação crônica das vias aéreas, com participação predominante de neutrófilos, macrófagos e linfócitos CD8+.
+II. Na bronquite crônica, a agressão predomina nos brônquios (hipertrofia das glândulas mucosas, hipersecreção de muco); no enfisema, a agressão ocorre ao nível alveolar, com destruição dos septos.
+III. A obstrução do fluxo aéreo na DPOC é completamente reversível após cessação do tabagismo e uso de broncodilatadores.
+IV. Em 50 a 70% dos casos de DPOC, há sobreposição dos fenótipos bronquite crônica e enfisema pulmonar.
+
+Assinale a alternativa correta:`,
+        opcoes: [
+          "Apenas I e III estão corretas.",
+          "Apenas II e IV estão corretas.",
+          "I, II e IV estão corretas.",
+          "I, II, III e IV estão corretas."
+        ],
+        gabarito: 2,
+        justificativa: `As afirmativas I, II e IV estão corretas. A afirmativa III está INCORRETA: a obstrução do fluxo aéreo na DPOC é persistente e NÃO completamente reversível, o que a diferencia fundamentalmente da asma. A cessação do tabagismo reduz a velocidade de declínio da função pulmonar, mas não restaura os valores espirométricos basais, pois as alterações estruturais são irreversíveis.`
+      },
+      {
+        num: 2,
+        enunciado: `Sobre os cuidados de enfermagem ao paciente internado com DPOC em exacerbação, analise as afirmativas:
+
+I. O posicionamento em Fowler elevado (45°) está indicado para otimizar a expansão torácica e reduzir o trabalho respiratório.
+II. A técnica de tosse eficaz (huff cough) e a respiração diafragmática são estratégias não farmacológicas para auxiliar na eliminação de secreções.
+III. A hidratação adequada contribui para a fluidificação do muco, facilitando sua eliminação e reduzindo o risco de obstrução brônquica.
+IV. O enfermeiro deve monitorar apenas a frequência respiratória, sendo desnecessário o registro das características da expectoração (cor, volume e consistência).
+
+Assinale a alternativa correta:`,
+        opcoes: [
+          "Apenas I e IV estão corretas.",
+          "Apenas II e III estão corretas.",
+          "I, II e III estão corretas.",
+          "I, II, III e IV estão corretas."
+        ],
+        gabarito: 2,
+        justificativa: `As afirmativas I, II e III estão corretas. A afirmativa IV está INCORRETA: o registro das características da expectoração (cor, volume e consistência) é responsabilidade do enfermeiro e constitui dado clínico essencial para monitorar a evolução, identificar sinais de infecção bacteriana (escarro purulento) e subsidiar decisões terapêuticas da equipe multiprofissional.`
+      },
+      {
+        num: 3,
+        enunciado: `Sobre o tratamento não farmacológico da DPOC, analise as afirmativas:
+
+I. A cessação do tabagismo é a intervenção isolada mais eficaz no manejo da DPOC.
+II. A oxigenoterapia domiciliar de longa duração (mínimo 15 horas/dia) está indicada para SpO₂ ≤ 88% em repouso ou PaO₂ ≤ 55 mmHg.
+III. A vacinação contra influenza está indicada anualmente para todos os pacientes com DPOC, complementada pelas vacinas pneumocócica, COVID-19 e Tdpa.
+IV. A reabilitação pulmonar é contraindicada em pacientes com DPOC grave, pois o esforço físico pode precipitar exacerbações.
+
+Assinale a alternativa correta:`,
+        opcoes: [
+          "Apenas I e IV estão corretas.",
+          "Apenas II e III estão corretas.",
+          "I, II e III estão corretas.",
+          "I, II, III e IV estão corretas."
+        ],
+        gabarito: 2,
+        justificativa: `As afirmativas I, II e III estão corretas. A afirmativa IV está INCORRETA: a reabilitação pulmonar não é contraindicada nos estágios graves de DPOC; ao contrário, é especialmente indicada nesses pacientes. É composta por treinamento físico supervisionado, fisioterapia respiratória, educação e suporte psicossocial, com benefícios comprovados na tolerância ao esforço e qualidade de vida.`
+      },
+      {
+        num: 4,
+        enunciado: `Um enfermeiro atende a um paciente com DPOC grave internado por exacerbação. O médico prescreve: "manter SpO₂ entre 88–92%". O familiar questiona por que não se oferece oxigênio em maior quantidade para "normalizar" a saturação.
+
+Qual alternativa melhor justifica a prescrição?`,
+        opcoes: [
+          "O oxigênio em alta concentração é contraindicado na DPOC porque causa broncoespasmo reflexo por ativação de receptores beta-adrenérgicos pulmonares.",
+          "Em pacientes com DPOC grave e hipercapnia crônica, o centro respiratório perde a sensibilidade ao CO₂ e passa a depender da hipóxia como estímulo ventilatório; ao corrigir excessivamente a SpO₂, elimina-se esse estímulo, levando à hipoventilação e risco de narcose hipercápnica.",
+          "A meta de SpO₂ entre 88–92% é adotada para economizar oxigênio medicinal e reduzir custos hospitalares.",
+          "O oxigênio em alta concentração causa vasoconstrição pulmonar intensa, precipitando cor pulmonale agudo e parada cardíaca."
+        ],
+        gabarito: 1,
+        justificativa: `Em pacientes com DPOC grave e hipercapnia crônica, o centro respiratório adapta-se ao CO₂ elevado e perde a sensibilidade a ele como estímulo ventilatório. O principal drive passa a ser a hipóxia (drive hipóxico). Ao oferecer oxigênio em excesso e corrigir a SpO₂ acima de 92%, esse estímulo é eliminado, causando hipoventilação reflexa, retenção adicional de CO₂ e risco de narcose hipercápnica. Por isso, a meta é SpO₂ 88–92%.`
+      },
+      {
+        num: 5,
+        enunciado: `Sobre o diagnóstico espirométrico da DPOC, analise as afirmativas:
+
+I. O critério diagnóstico é a relação VEF₁/CVF inferior a 0,70 após uso de broncodilatador, indicando obstrução do fluxo aéreo não completamente reversível.
+II. O VEF₁ representa a quantidade de ar que o paciente consegue expulsar com força máxima no primeiro segundo após inspiração máxima; valores reduzidos indicam obstrução das vias aéreas.
+III. A CVF representa o volume total de ar que o pulmão consegue expulsar em uma expiração forçada máxima; na DPOC, a relação VEF₁/CVF reduzida significa que menos de 70% desse volume sai no primeiro segundo.
+IV. A espirometria deve ser realizada ANTES da administração do broncodilatador; pacientes que usam qualquer medicação inalatória devem ser excluídos do exame diagnóstico.
+
+Assinale a alternativa correta:`,
+        opcoes: [
+          "Apenas I e IV estão corretas.",
+          "Apenas II e III estão corretas.",
+          "I, II e III estão corretas.",
+          "I, II, III e IV estão corretas."
+        ],
+        gabarito: 2,
+        justificativa: `As afirmativas I, II e III estão corretas. A afirmativa IV está INCORRETA: o diagnóstico espirométrico da DPOC exige que a relação VEF₁/CVF < 0,70 seja confirmada APÓS administração de broncodilatador. Isso é fundamental para excluir obstrução completamente reversível, como na asma. Pacientes em uso de medicação inalatória não são excluídos do exame.`
+      }
+    ]
+  },
+  {
+    id: "renal",
+    titulo: "Distúrbios Renais",
+    questoes: [
+      {
+        num: 1,
+        enunciado: `Sobre as três categorias etiológicas da lesão renal aguda (LRA) e seus mecanismos fisiopatológicos, analise as afirmativas:
+
+I. A LRA pré-renal (60–70% dos casos) ocorre por redução da perfusão renal sem lesão estrutural; é reversível com hidratação precoce, sendo a hipovolemia sua principal causa.
+II. A LRA renal intrínseca (25–35% dos casos) envolve lesão estrutural do parênquima; a necrose tubular aguda isquêmica por choque prolongado é a causa mais comum.
+III. A LRA pós-renal (5–10% dos casos) resulta de obstrução ao fluxo de urina; é reversível se a desobstrução ocorrer em até 48–72 horas, sendo a HPB a causa mais comum em homens idosos.
+IV. Os AINEs causam LRA pré-renal, pois inibem a síntese de prostaglandinas vasodilatadoras renais, reduzindo o fluxo sanguíneo glomerular.
+
+Assinale a alternativa correta:`,
+        opcoes: [
+          "Apenas I e III estão corretas.",
+          "Apenas II e IV estão corretas.",
+          "I, II e III estão corretas.",
+          "I, II, III e IV estão corretas."
+        ],
+        gabarito: 3,
+        justificativa: `Todas as afirmativas estão corretas. Os AINEs inibem a ciclo-oxigenase (COX), reduzindo a síntese de prostaglandinas que mantêm a vasodilatação da arteríola aferente renal. Essa redução do fluxo glomerular pode precipitar LRA pré-renal, especialmente em pacientes com perfusão renal já comprometida (idosos, hipertensos, cardiopatas). São a classe farmacológica mais prescrita mundialmente.`
+      },
+      {
+        num: 2,
+        enunciado: `Uma paciente de 72 anos internada em UTI por sepse de foco urinário desenvolve: débito urinário de 15 mL/h (peso 60 kg), edema generalizado com ganho de 4 kg em 48 horas, confusão mental, respiração de Kussmaul e K⁺ = 6,2 mEq/L. Gasometria: pH 7,22, HCO₃⁻ 14 mEq/L.
+
+Sobre as manifestações clínicas e as prioridades de enfermagem nesse quadro de LRA grave, assinale a alternativa correta:`,
+        opcoes: [
+          "A respiração de Kussmaul é sinal de hiperventilação por ansiedade; a prioridade é administrar ansiolítico e posicionar em decúbito lateral.",
+          "O quadro apresenta oligúria, acidose metabólica grave, hipercalemia e encefalopatia urêmica, configurando LRA grave; a hipercalemia de 6,2 mEq/L representa risco de arritmia fatal e exige monitoramento eletrocardiográfico contínuo e medidas de emergência.",
+          "A hipercalemia de 6,2 mEq/L é valor esperado em pacientes idosos hospitalizados e não requer intervenção imediata.",
+          "A confusão mental é achado comum em UTI sem relação com a função renal; o registro do débito urinário de 15 mL/h é suficiente como intervenção."
+        ],
+        gabarito: 1,
+        justificativa: `O débito urinário de 15 mL/h em paciente de 60 kg equivale a 0,25 mL/kg/h, muito abaixo do mínimo esperado (0,5 mL/kg/h). A acidose metabólica grave (pH 7,22, HCO₃⁻ 14) explica a respiração de Kussmaul, que é mecanismo compensatório respiratório para eliminação de CO₂. A hipercalemia de 6,2 mEq/L representa emergência por risco de arritmias fatais, exigindo ECG imediato. A confusão mental representa encefalopatia urêmica. Todas as situações exigem comunicação imediata e intervenção prioritária.`
+      },
+      {
+        num: 3,
+        enunciado: `Sobre a Doença Renal Crônica (DRC) e sua classificação pelo KDIGO, analise as afirmativas:
+
+I. A DRC é definida como perda progressiva e irreversível da função renal por período superior a 3 meses, com TFG < 60 mL/min/1,73m² e/ou marcadores de dano renal.
+II. O estadiamento G4 (TFG 15–29 mL/min/1,73m²) corresponde à fase de preparo para TRS; G5 (TFG < 15) representa falência renal com indicação de diálise ou transplante.
+III. A albuminúria ≥ 300 mg/g (categoria A3) indica macroalbuminúria grave, associada a maior risco cardiovascular e de progressão renal.
+IV. Pacientes classificados como G1 (TFG ≥ 90 mL/min/1,73m²) não podem ser diagnosticados com DRC, independentemente da presença de outros marcadores de dano renal.
+
+Assinale a alternativa correta:`,
+        opcoes: [
+          "Apenas I e IV estão corretas.",
+          "Apenas II e III estão corretas.",
+          "I, II e III estão corretas.",
+          "I, II, III e IV estão corretas."
+        ],
+        gabarito: 2,
+        justificativa: `As afirmativas I, II e III estão corretas. A afirmativa IV está INCORRETA: pacientes com TFG ≥ 90 mL/min/1,73m² (G1) PODEM ser diagnosticados com DRC quando há marcadores de dano renal presentes por mais de 3 meses, como albuminúria persistente, hematúria de origem glomerular, alterações histológicas à biópsia ou alterações estruturais à imagem. A TFG normal não exclui o diagnóstico de DRC quando outros marcadores de lesão renal estão presentes.`
+      },
+      {
+        num: 4,
+        enunciado: `Um paciente de 55 anos com DRC em estágio G5 iniciará hemodiálise em 30 dias. Sobre as características e os cuidados de enfermagem específicos de cada modalidade de TRS, analise as afirmativas:
+
+I. A hemodiálise corresponde a aproximadamente 92% dos pacientes em TRS no Brasil, com sessões 3 vezes por semana de 3 a 4 horas; o acesso vascular pode ser por FAV ou cateter venoso central.
+II. Na diálise peritoneal, os cuidados incluem assepsia rigorosa na manipulação do cateter de Tenckhoff, observação da cor e turbidez do efluente e vigilância de sinais de peritonite.
+III. Os cuidados pós-transplante renal incluem monitoramento da função do enxerto (creatinina e débito urinário), identificação de sinais de rejeição e vigilância de infecções oportunistas.
+IV. A diálise peritoneal é contraindicada na DRC por apresentar risco muito elevado de peritonite e ser menos eficaz que a hemodiálise; utilizada apenas como último recurso.
+
+Assinale a alternativa correta:`,
+        opcoes: [
+          "Apenas I e IV estão corretas.",
+          "Apenas II e III estão corretas.",
+          "I, II e III estão corretas.",
+          "I, II, III e IV estão corretas."
+        ],
+        gabarito: 2,
+        justificativa: `As afirmativas I, II e III estão corretas. A afirmativa IV está INCORRETA: a diálise peritoneal não é contraindicada na DRC nem é considerado último recurso. É modalidade válida e complementar, utilizada por aproximadamente 7% dos pacientes em TRS no Brasil, com vantagens como maior autonomia, possibilidade domiciliar (DPAC ou DPCA) e melhor preservação da função renal residual.`
+      },
+      {
+        num: 5,
+        enunciado: `Um paciente em hemodiálise regular apresenta fístula arteriovenosa (FAV) no braço esquerdo. Um técnico de enfermagem questiona quais cuidados deve ter com esse membro.
+
+Sobre os cuidados corretos com a FAV e o paciente em hemodiálise, assinale a alternativa correta:`,
+        opcoes: [
+          "É permitido aferir a pressão arterial no braço com a FAV, desde que o manguito seja aplicado com cuidado; a punção venosa no mesmo membro também é permitida em situações de emergência.",
+          "O braço com FAV deve ser protegido de punções venosas, aferição de pressão arterial e aplicação de torniquete; o enfermeiro deve auscultar o frêmito regularmente para confirmar que a fístula está funcionando, e orientar o paciente a não dormir sobre esse membro.",
+          "A FAV dispensa cuidados especiais fora do ambiente dialítico; o paciente pode realizar atividades normais com o membro, incluindo carregar peso, sem restrições.",
+          "A ausculta do frêmito na FAV deve ser realizada apenas pelo médico nefrologista; o enfermeiro não tem competência para avaliar o acesso vascular fora da sessão de hemodiálise."
+        ],
+        gabarito: 1,
+        justificativa: `O frêmito é o som e a vibração produzidos pelo fluxo sanguíneo turbulento na fístula; sua ausência indica possível trombose e exige comunicação imediata à equipe médica. O membro com FAV deve ser protegido de punções, aferição de PA e torniquetes, pois qualquer compressão pode comprometer o fluxo e causar trombose da fístula, principal complicação e causa de perda do acesso. A ausculta e palpação do frêmito é competência e responsabilidade do enfermeiro.`
+      }
+    ]
+  },
+  {
+    id: "iras",
+    titulo: "IRAS",
+    questoes: [
+      {
+        num: 1,
+        enunciado: `Sobre os conceitos de infecção comunitária, infecção hospitalar e infecções relacionadas à assistência à saúde (IRAS), analise as afirmativas:
+
+I. A infecção comunitária é aquela presente no momento da admissão hospitalar, não relacionada a internação anterior no mesmo serviço.
+II. A infecção hospitalar é definida pela manifestação clínica a partir de 72 horas após a admissão, na ausência de evidência de infecção no momento da internação.
+III. O conceito de IRAS é mais RESTRITO que o de infecção hospitalar, limitando-se exclusivamente ao ambiente de internação hospitalar.
+IV. As IRAS incluem as infecções ocupacionais dos profissionais de saúde, abrangendo qualquer ambiente de cuidado.
+
+Assinale a alternativa correta:`,
+        opcoes: [
+          "Apenas I e II estão corretas.",
+          "Apenas III e IV estão corretas.",
+          "I, II e IV estão corretas.",
+          "I, II, III e IV estão corretas."
+        ],
+        gabarito: 2,
+        justificativa: `As afirmativas I, II e IV estão corretas. A afirmativa III está INCORRETA: o conceito de IRAS é mais AMPLO que o de infecção hospitalar, e não mais restrito. Enquanto a infecção hospitalar se limita ao ambiente de internação, as IRAS abrangem qualquer cenário assistencial (hospitais, ambulatórios, serviços domiciliares, clínicas, unidades de longa permanência) e incluem as infecções ocupacionais dos profissionais de saúde.`
+      },
+      {
+        num: 2,
+        enunciado: `Um paciente de 70 anos em UTI por sepse desenvolve, após 72 horas de ventilação mecânica, febre, secreção traqueal purulenta e infiltrado pulmonar bilateral. Suspeita-se de PAV. Analise as afirmativas:
+
+I. A PAV é definida como pneumonia após 48 horas de intubação orotraqueal e início da ventilação mecânica; mortalidade em UTI adulto de 20 a 30%.
+II. Os principais agentes etiológicos são microrganismos multirresistentes: Pseudomonas aeruginosa, Acinetobacter baumannii e MRSA (grupo ESKAPE, prioridade crítica da OMS).
+III. O bundle de prevenção da PAV inclui: cabeceira 30–45°, higiene oral com clorexidina 0,12% a cada 8 horas, pressão do cuff entre 20 e 30 cmH₂O, avaliação diária de critérios para extubação e sedação mínima necessária.
+IV. A troca rotineira dos circuitos do ventilador mecânico a cada 48 horas é recomendada pela ANVISA como medida essencial de prevenção da PAV.
+
+Assinale a alternativa correta:`,
+        opcoes: [
+          "Apenas I e IV estão corretas.",
+          "Apenas II e III estão corretas.",
+          "I, II e III estão corretas.",
+          "I, II, III e IV estão corretas."
+        ],
+        gabarito: 2,
+        justificativa: `As afirmativas I, II e III estão corretas. A afirmativa IV está INCORRETA: segundo as normas vigentes da ANVISA, os circuitos do ventilador mecânico devem ser trocados SOMENTE quando estiverem visivelmente sujos ou quando o paciente receber alta da UTI. A troca rotineira por calendário fixo não é recomendada, pois não reduz a incidência de PAV e aumenta desnecessariamente os custos e o risco de manipulação do circuito.`
+      },
+      {
+        num: 3,
+        enunciado: `Um paciente com cateter venoso central (CVC) em veia subclávia há 5 dias desenvolve febre (38,8°C), calafrios e piora do estado geral sem outro foco infeccioso. A equipe suspeita de IPCS associada ao CVC.
+
+Sobre o bundle de prevenção da IPCS e as condutas de enfermagem, assinale a alternativa correta:`,
+        opcoes: [
+          "Solicitar hemoculturas imediatamente após o início da antibioticoterapia empírica para não atrasar o tratamento; o CVC deve ser mantido até a confirmação microbiológica.",
+          "A antissepsia com clorexidina alcoólica 0,5%, o curativo de poliuretano transparente com troca a cada 7 dias, a avaliação diária da necessidade do CVC e a coleta de hemoculturas periféricas ANTES do antibiótico são medidas centrais no manejo da suspeita de IPCS.",
+          "O curativo de gaze e fita sobre o sítio de inserção do CVC deve ser trocado a cada 7 dias, igualmente ao curativo de poliuretano.",
+          "O CVC deve ser mantido em todos os casos de suspeita de IPCS até a confirmação por hemocultura positiva."
+        ],
+        gabarito: 1,
+        justificativa: `A coleta de hemoculturas periféricas ANTES do início do antibiótico é fundamental para identificar o agente etiológico e orientar o tratamento. O curativo de gaze e fita deve ser trocado a cada 24 a 48 horas (diferente do poliuretano, que é trocado a cada 7 dias). O CVC deve ser removido quando há suspeita ou confirmação de infecção, mau funcionamento ou quando não for mais necessário.`
+      }
+    ]
+  }
+];
+
+// =============================================
+// CONFIGURAÇÃO — cole aqui a URL do seu Apps Script
+// =============================================
+const SHEETS_URL = 'COLE_AQUI_A_URL_DO_APPS_SCRIPT';
+// =============================================
+
+async function enviarParaSheets(payload) {
+  if (!SHEETS_URL || SHEETS_URL === 'COLE_AQUI_A_URL_DO_APPS_SCRIPT') return;
+  try {
+    await fetch(SHEETS_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+  } catch(e) { console.warn('Sheets: falha no envio', e); }
+}
+
+// Estado global
+let estado = {
+  nome: '', ra: '', turma: '',
+  temaAtual: 0,
+  respostas: {},
+  total: 0,
+  acertos: 0
+};
+
+function iniciarQuiz() {
+  const nome = document.getElementById('nome').value.trim();
+  const ra = document.getElementById('ra').value.trim();
+  const turma = document.getElementById('turma').value;
+  const alerta = document.getElementById('alerta-form');
+  if (!nome || !ra || !turma) {
+    alerta.classList.add('visivel');
+    return;
+  }
+  alerta.classList.remove('visivel');
+  estado.nome = nome; estado.ra = ra; estado.turma = turma;
+
+  estado.total = TEMAS.reduce((s, t) => s + t.questoes.length, 0);
+
+  // Enviar registro de início
+  enviarParaSheets({
+    evento: 'inicio',
+    nome, ra, turma,
+    dataHora: new Date().toLocaleString('pt-BR', { timeZone: 'America/Sao_Paulo' })
+  });
+
+  document.getElementById('tela-identificacao').style.display = 'none';
+  document.getElementById('quiz-area').style.display = 'block';
+
+  construirInterface();
+  mostrarTema(0);
+  atualizarProgresso();
+}
+
+function construirInterface() {
+  // Abas
+  const nav = document.getElementById('temas-nav');
+  nav.innerHTML = '';
+  TEMAS.forEach((tema, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'tema-btn' + (i === 0 ? ' ativo' : '');
+    btn.id = `tema-btn-${i}`;
+    btn.textContent = tema.titulo;
+    btn.onclick = () => { estado.temaAtual = i; mostrarTema(i); };
+    nav.appendChild(btn);
+  });
+
+  // Seções
+  const cont = document.getElementById('secoes-container');
+  cont.innerHTML = '';
+  TEMAS.forEach((tema, ti) => {
+    const sec = document.createElement('div');
+    sec.className = 'secao-tema';
+    sec.id = `secao-${ti}`;
+
+    let html = `<div class="secao-header">
+      <span class="secao-numero">Tema ${ti+1} de ${TEMAS.length}</span>
+      <h2 class="secao-titulo">${tema.titulo}</h2>
+    </div>`;
+
+    tema.questoes.forEach((q, qi) => {
+      const id = `q-${ti}-${qi}`;
+      html += `<div class="questao-card" id="${id}">
+        <div class="questao-header">
+          <span class="questao-num">Questão ${qi+1}</span>
+          <span class="questao-status" id="${id}-status"></span>
+        </div>
+        <div class="questao-enunciado">${q.enunciado}</div>
+        <div class="opcoes" id="${id}-opcoes">`;
+      const letras = ['A', 'B', 'C', 'D'];
+      q.opcoes.forEach((op, oi) => {
+        html += `<div class="opcao" id="${id}-op-${oi}" onclick="selecionarOpcao(${ti},${qi},${oi})">
+          <span class="opcao-letra">${letras[oi]}</span>
+          <span class="opcao-texto">${op}</span>
+        </div>`;
+      });
+      html += `</div>
+        <div class="questao-footer">
+          <button class="btn-confirmar" id="${id}-btn" onclick="confirmarResposta(${ti},${qi})" disabled>Confirmar resposta</button>
+        </div>
+        <div class="gabarito-box" id="${id}-gabarito">
+          <div class="gabarito-header"><span class="resultado-icon" id="${id}-gab-icon"></span><span id="${id}-gab-titulo"></span></div>
+          <div class="gabarito-justificativa">${q.justificativa}</div>
+        </div>
+      </div>`;
+    });
+
+    sec.innerHTML = html;
+    cont.appendChild(sec);
+  });
+}
+
+function selecionarOpcao(ti, qi, oi) {
+  const id = `q-${ti}-${qi}`;
+  const chave = `${ti}-${qi}`;
+  if (estado.respostas[chave] !== undefined && typeof estado.respostas[chave] === 'object' && estado.respostas[chave].confirmada) return;
+
+  // Limpa seleção anterior
+  const opcoes = document.querySelectorAll(`#${id}-opcoes .opcao`);
+  opcoes.forEach(el => el.classList.remove('selecionada'));
+
+  document.getElementById(`${id}-op-${oi}`).classList.add('selecionada');
+  estado.respostas[chave] = { selecionada: oi, confirmada: false };
+
+  document.getElementById(`${id}-btn`).disabled = false;
+}
+
+function confirmarResposta(ti, qi) {
+  const id = `q-${ti}-${qi}`;
+  const chave = `${ti}-${qi}`;
+  const resp = estado.respostas[chave];
+  if (!resp || resp.confirmada) return;
+
+  const q = TEMAS[ti].questoes[qi];
+  const acertou = resp.selecionada === q.gabarito;
+
+  resp.confirmada = true;
+  resp.acertou = acertou;
+
+  // Bloquear
+  const opcoes = document.querySelectorAll(`#${id}-opcoes .opcao`);
+  opcoes.forEach((el, oi) => {
+    el.classList.add('bloqueada');
+    el.classList.remove('selecionada');
+    if (oi === q.gabarito) el.classList.add('correta');
+    else if (oi === resp.selecionada && !acertou) el.classList.add('incorreta');
+  });
+
+  // Status card
+  const card = document.getElementById(id);
+  card.classList.add('respondida');
+  if (!acertou) card.classList.add('errada');
+  document.getElementById(`${id}-status`).textContent = acertou ? '✅' : '❌';
+
+  // Gabarito
+  const gabBox = document.getElementById(`${id}-gabarito`);
+  gabBox.classList.add(acertou ? 'acerto' : 'erro', 'visivel');
+  document.getElementById(`${id}-gab-icon`).textContent = acertou ? '✅' : '❌';
+  document.getElementById(`${id}-gab-titulo`).textContent = acertou ? 'Correto! Muito bem.' : `Resposta incorreta. A alternativa correta era a ${['A','B','C','D'][q.gabarito]}.`;
+
+  // Desabilitar botão
+  document.getElementById(`${id}-btn`).disabled = true;
+  document.getElementById(`${id}-btn`).textContent = 'Respondida';
+
+  atualizarProgresso();
+  atualizarAbaTema(ti);
+  verificarConclusao();
+}
+
+function atualizarProgresso() {
+  let respondidas = 0, acertos = 0;
+  TEMAS.forEach((tema, ti) => {
+    tema.questoes.forEach((q, qi) => {
+      const chave = `${ti}-${qi}`;
+      const resp = estado.respostas[chave];
+      if (resp && resp.confirmada) {
+        respondidas++;
+        if (resp.acertou) acertos++;
+      }
+    });
+  });
+  const pct = estado.total > 0 ? (respondidas / estado.total * 100) : 0;
+  document.getElementById('barra-progresso').style.width = pct + '%';
+  document.getElementById('num-progresso').textContent = `${respondidas} / ${estado.total}`;
+  estado.acertos = acertos;
+}
+
+function atualizarAbaTema(ti) {
+  const tema = TEMAS[ti];
+  let todas = true;
+  tema.questoes.forEach((q, qi) => {
+    const resp = estado.respostas[`${ti}-${qi}`];
+    if (!resp || !resp.confirmada) todas = false;
+  });
+  if (todas) {
+    const btn = document.getElementById(`tema-btn-${ti}`);
+    btn.classList.add('completo');
+    btn.innerHTML = `<span class="check">✓</span>${tema.titulo}`;
+  }
+}
+
+function mostrarTema(idx) {
+  document.querySelectorAll('.secao-tema').forEach(s => s.classList.remove('visivel'));
+  document.querySelectorAll('.tema-btn').forEach(b => b.classList.remove('ativo'));
+  document.getElementById(`secao-${idx}`).classList.add('visivel');
+  document.getElementById(`tema-btn-${idx}`).classList.add('ativo');
+  estado.temaAtual = idx;
+  document.getElementById('btn-anterior').disabled = idx === 0;
+  document.getElementById('btn-proximo').disabled = idx === TEMAS.length - 1;
+  document.getElementById('btn-proximo').textContent = idx === TEMAS.length - 1 ? 'Último tema' : 'Próximo tema →';
+
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function navTema(dir) {
+  const novo = estado.temaAtual + dir;
+  if (novo >= 0 && novo < TEMAS.length) mostrarTema(novo);
+}
+
+function verificarConclusao() {
+  let todas = true;
+  TEMAS.forEach((tema, ti) => {
+    tema.questoes.forEach((q, qi) => {
+      const resp = estado.respostas[`${ti}-${qi}`];
+      if (!resp || !resp.confirmada) todas = false;
+    });
+  });
+  if (todas) setTimeout(mostrarResultado, 800);
+}
+
+function mostrarResultado() {
+  document.getElementById('quiz-area').style.display = 'none';
+  const resultDiv = document.getElementById('resultado-final');
+  resultDiv.style.display = 'block';
+
+  const total = estado.total;
+  const acertos = estado.acertos;
+  const erros = total - acertos;
+  const pct = Math.round(acertos / total * 100);
+
+  let emoji = pct >= 90 ? '🏆' : pct >= 70 ? '🎓' : pct >= 50 ? '📚' : '💪';
+  let msg = pct >= 90
+    ? 'Desempenho excelente! Você demonstra domínio sólido dos conteúdos do 2º Bimestre. Continue assim!'
+    : pct >= 70
+    ? 'Bom desempenho! Você compreende a maior parte dos conteúdos. Revise os pontos em que errou para aprimorar ainda mais.'
+    : pct >= 50
+    ? 'Desempenho razoável. Há conteúdos que merecem revisão mais aprofundada. Releia as justificativas das questões incorretas.'
+    : 'Ainda há muito a explorar! Não desanime. Revise os materiais das aulas, releia as justificativas e tente novamente.';
+
+  document.getElementById('res-emoji').textContent = emoji;
+  document.getElementById('res-nome').textContent = estado.nome;
+  document.getElementById('res-ra').textContent = `RA: ${estado.ra} · Turma ${estado.turma}`;
+  document.getElementById('res-placar').textContent = `${acertos}/${total}`;
+  document.getElementById('rb-acertos').textContent = acertos;
+  document.getElementById('rb-erros').textContent = erros;
+  document.getElementById('rb-pct').textContent = pct + '%';
+  document.getElementById('res-mensagem').textContent = msg;
+
+  // Montar detalhes por tema
+  const detalhesTemas = TEMAS.map((tema, ti) => {
+    let acertosTema = 0;
+    tema.questoes.forEach((q, qi) => {
+      const resp = estado.respostas[`${ti}-${qi}`];
+      if (resp && resp.acertou) acertosTema++;
+    });
+    return `${tema.titulo}: ${acertosTema}/${tema.questoes.length}`;
+  }).join(' | ');
+
+  // Enviar resultado completo para Google Sheets
+  enviarParaSheets({
+    evento: 'conclusao',
+    nome: estado.nome,
+    ra: estado.ra,
+    turma: estado.turma,
+    acertos,
+    erros,
+    total,
+    percentual: pct + '%',
+    detalhesPorTema: detalhesTemas,
+    dataHora: new Date().toLocaleString('pt-BR', { timeZone: 'America/Sao_Paulo' })
+  });
+
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function reiniciar() {
+  estado = { nome: '', ra: '', turma: '', temaAtual: 0, respostas: {}, total: 0, acertos: 0 };
+  document.getElementById('resultado-final').style.display = 'none';
+  document.getElementById('secoes-container').innerHTML = '';
+  document.getElementById('temas-nav').innerHTML = '';
+  document.getElementById('quiz-area').style.display = 'none';
+  document.getElementById('tela-identificacao').style.display = 'block';
+  document.getElementById('nome').value = '';
+  document.getElementById('ra').value = '';
+  document.getElementById('turma').value = '';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+</script>
+</body>
+</html>
